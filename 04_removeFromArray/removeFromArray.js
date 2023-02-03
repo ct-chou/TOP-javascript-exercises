@@ -1,13 +1,19 @@
 const removeFromArray = function(...args) {
     let inputArray = args[0];
     let output = [];
-    let addFlag = False;
+    let addFlag = true;
 
     for(i=0;i<inputArray.length;i++) {
-        
-        if(inputArray[i] != args[1]) {
+        for(j=1;j<args.length;j++) {
+            if(inputArray[i] === args[j]) {
+                addFlag = false;
+                break;
+            }
+        }
+        if(addFlag) {
             output.push(inputArray[i]);
         }
+        addFlag = true;
     }
     return output;
 };
